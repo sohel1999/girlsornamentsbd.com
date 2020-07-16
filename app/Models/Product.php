@@ -9,6 +9,7 @@ class Product extends Model
     protected  $guarded = [];
 
     protected  $casts = [
-        'images'=>'array'
+        'images'=>'array',
+        'status'=>'boolean'
     ];
 }

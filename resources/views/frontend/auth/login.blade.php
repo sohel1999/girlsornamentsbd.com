@@ -15,23 +15,28 @@
             <div class="row">
                 <div class="account-details">
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <form method="post" class="create-account-form" action="#">
+                        <form method="post" class="create-account-form" action="{{route('auth.register')}}">
+                            @csrf
                             <h1 class="heading-title">Create an account</h1>
                             <div class="form-row">
                                 <label>Full name</label>
-                                <input type="email">
+                                <input type="text" name="name">
                             </div>
                             <div class="form-row">
                                 <label>Phone</label>
-                                <input type="email">
+                                <input type="text" name="phone">
                             </div>
                             <div class="form-row">
                                 <label>Email address</label>
-                                <input type="email">
+                                <input type="email" name="email">
+                            </div>
+                            <div class="form-row">
+                                <label>Password</label>
+                                <input type="password" name="password">
                             </div>
                             <div class="form-row">
                                 <label> address</label>
-                                <textarea class="form-control"> </textarea>
+                                <textarea class="form-control" name="address"> </textarea>
                             </div>
                             <div class="submit">
                                 <button name="submitcreate" id="submitcreate" type="submit" class="">
@@ -44,15 +49,18 @@
                         </form>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <form method="post" class="login-form" action="#">
+                        <form method="post" class="login-form" action="{{route('login.process')}}">
+                            @csrf
                             <h1 class="heading-title">Already registered?</h1>
                             <p class="form-row">
                                 <label>Email address</label>
-                                <input type="email">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                                @error('email') <sapn class="text-danger">{{$message}}</sapn> @enderror
                             </p>
                             <p class="form-row">
                                 <label>Password</label>
-                                <input type="password">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                                @error('password') <sapn class="text-danger">{{$message}}</sapn> @enderror
                             </p>
                             <p class="lost-password form-group"><a rel="nofollow" href="#">Forgot your password?</a></p>
                             <div class="submit">

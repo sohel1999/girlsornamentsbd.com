@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{asset('/frontend')}}/css/responsive.css">
     <!-- modernizr css -->
     <script src="{{asset('/frontend')}}/js/vendor/modernizr-2.8.3.min.js"></script>
+    @notifyCss
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -87,6 +88,8 @@
 <script src="{{asset('/frontend')}}/lib/home.js" type="text/javascript"></script>
 <!-- main js -->
 <script src="{{asset('/frontend')}}/js/main.js"></script>
+@include('notify::messages')
+@notifyJs
 </body>
 
 <!-- Mirrored from d29u17ylf1ylz9.cloudfront.net/taj-preview/taj/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Jul 2020 19:26:21 GMT -->

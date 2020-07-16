@@ -11,7 +11,12 @@
                 <div class="col-md-6">
                     <div class="header-top-menu pull-right">
                         <ul class="nav-menu">
-                            <li><a href="{{route('auth.index')}}">LOGIN</a></li>
+                            @auth()
+                                <li><a href="{{route('logout')}}">Logout</a></li>
+                            @endauth
+                            @guest()
+                                <li><a href="{{route('auth.index')}}">LOGIN</a></li>
+                            @endguest
                             <li><a href="#">LANGLUAGE</a>
                                 <div class="ht-menu-down">
                                     <ul>

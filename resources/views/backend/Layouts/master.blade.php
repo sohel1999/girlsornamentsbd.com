@@ -19,7 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/assets/vendor/datatables/css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    @notifyCss
+    <title>GirlsBd</title>
 </head>
 
 <body>
@@ -118,6 +119,8 @@
 <script src="{{asset('backend')}}/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
 <script src="{{asset('backend')}}/assets/vendor/charts/c3charts/C3chartjs.js"></script>
 <script src="{{asset('backend')}}/assets/libs/js/dashboard-ecommerce.js"></script>
+@include('notify::messages')
+@notifyJs
 </body>
 
 </html>

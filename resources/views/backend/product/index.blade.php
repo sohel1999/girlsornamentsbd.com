@@ -53,6 +53,7 @@
                                     <td>{{$product->stock}}</td>
                                     <td>{{$product->created_at->format('Y/m/d')}}</td>
                                     <td>
+
                                         @if($product->status === true)
                                             <span class="badge badge-success">active</span>
                                         @else
