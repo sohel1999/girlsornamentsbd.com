@@ -9,13 +9,12 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-
     public function index()
     {
 //        return  Order::all();
-        return view('backend.order.index',[
-            'orders'=>Order::all(),
-            'status'=> Order::getStatus()
+        return view('backend.order.index', [
+            'orders' => Order::all(),
+            'status' => Order::getStatus()
         ]);
     }
 
@@ -32,7 +31,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,17 +42,16 @@ class OrderController extends Controller
 
     public function show($id)
     {
-
-      $order= Order::with('orderItems.product')->findOrFail($id);
-        return  view('backend.order.show',[
-            'order'=>$order
+        $order = Order::with('orderItems.product')->findOrFail($id);
+        return view('backend.order.show', [
+            'order' => $order
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -64,8 +62,8 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -76,11 +74,22 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatus($validStatusCode, $id)
+    {
+        if (array_key_exists($validStatusCode, Order::getStatus())) {
+            Order::where('id', $id)->update([
+                'status' => $validStatusCode
+            ]);
+        }
+        notify()->success('Order set is ' . $validStatusCode);
+        return redirect()->action([OrderController::class, 'index']);
     }
 }

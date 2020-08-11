@@ -15,7 +15,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "mckenziearts/laravel-notify": "^1.1"
+        "mckenziearts/laravel-notify": "^1.1",
+        "shipu/php-sslwireless-payment": "^1.0",
+        "stechstudio/laravel-php-cs-fixer": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.7",

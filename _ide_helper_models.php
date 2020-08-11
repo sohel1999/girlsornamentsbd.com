@@ -32,7 +32,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Brand whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Brand whereUpdatedAt($value)
  */
-	class Brand extends \Eloquent {}
+    class Brand extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -59,7 +61,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
  */
-	class Category extends \Eloquent {}
+    class Category extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -96,7 +100,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Order whereUserId($value)
  */
-	class Order extends \Eloquent {}
+    class Order extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -124,7 +130,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OrderItem whereUnitPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OrderItem whereUpdatedAt($value)
  */
-	class OrderItem extends \Eloquent {}
+    class OrderItem extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -151,7 +159,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Payment whereUpdatedAt($value)
  */
-	class Payment extends \Eloquent {}
+    class Payment extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -184,7 +194,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereStock($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereUpdatedAt($value)
  */
-	class Product extends \Eloquent {}
+    class Product extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -221,6 +233,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  */
-	class User extends \Eloquent {}
+    class User extends \Eloquent
+    {
+    }
 }
-

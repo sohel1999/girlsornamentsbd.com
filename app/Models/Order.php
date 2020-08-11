@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected  $guarded = [];
+    protected $guarded = [];
 
 
-    public static  function getStatus()
+    public static function getStatus()
     {
         return [
             'pending'=>'badge-dot badge-brand mr-1',
@@ -19,8 +19,8 @@ class Order extends Model
         ];
     }
 
-    public function  orderItems()
+    public function orderItems()
     {
-        return $this->hasMany(OrderItem::class,'order_id','id');
+        return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }
 }

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected  $guarded = [];
+    protected $guarded = [];
 
-    protected  $casts = [
+    protected $casts = [
         'images'=>'array',
         'status'=>'boolean'
     ];

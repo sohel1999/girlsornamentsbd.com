@@ -11,9 +11,9 @@
                         Menu
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
+                        <a class="nav-link {{request()->is('dashboard/products/*') ? 'active':''}}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
                             <i class="fa fa-fw fa-rocket"></i>Product</a>
-                        <div id="submenu-2" class="collapse submenu" style="">
+                        <div id="submenu-2" class="collapse submenu {{request()->is('dashboard/products/*') ? 'show':''}} " style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('products.index')}}">Product List</a>
@@ -56,20 +56,31 @@
                         <div id="submenu-5" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/general-table.html">General Tables</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/data-tables.html">Data Tables</a>
+                                    <a class="nav-link" href="{{route('orders.index')}}">Order</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-user"></i> User </a>
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-user"></i> User
+                        </a>
                         <div id="submenu-6" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('users.index')}}">Customer</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-6"><i class="fas fa-fw fa-table"></i>slider</a>
+                        <div id="submenu-7" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('sliders.index')}}">Slider</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('sliders.index')}}">Create</a>
                                 </li>
                             </ul>
                         </div>

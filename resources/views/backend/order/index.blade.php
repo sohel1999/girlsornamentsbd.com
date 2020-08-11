@@ -65,7 +65,7 @@
                                             <div class="dropdown-menu" aria-labelledby="dLabel">
                                                 <a class="btn" href="{{route('orders.show',$order->id)}}">Invoice</a>
                                                 @foreach($status as $key=>$s)
-                                                    <a class="btn" href="">
+                                                    <a class="btn" href="{{route('change.status',['id'=>$order->id,'status'=>$order->status])}}">
                                                         <span class="{{$s}}"></span>
                                                         {{$key}}
                                                     </a>

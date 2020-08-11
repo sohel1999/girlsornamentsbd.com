@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home One || Taj Mordern Style</title>
+    <title> @yield('title','home')|| {{config('app.name')}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/frontend')}}/img/favicon.ico">
-    <!-- Place favicon.ico in the root directory -->
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
 

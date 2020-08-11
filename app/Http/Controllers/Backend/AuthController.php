@@ -12,9 +12,9 @@ class AuthController extends Controller
         return view('backend.auth.index');
     }
 
-    public  function loginProcess(Request $request)
+    public function loginProcess(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'email'=>'required|email',
             'password'=>'required'
         ]);
@@ -22,24 +22,23 @@ class AuthController extends Controller
             'email'=>$request->input('email'),
             'password'=>$request->input('password')
         ];
-        if(auth()->attempt($credentials))
-        {
+        if (auth()->attempt($credentials)) {
             $destination = [
                 'admin'=>'dashboard',
                 'customer'=>'home'
             ];
-            if(array_key_exists(auth()->user()->role,$destination)){
+            if (array_key_exists(auth()->user()->role, $destination)) {
                 return  redirect()->route($destination[auth()->user()->role]);
             }
             return redirect()->route('dashboard');
         }
         notify()->error('Credentials Invalid');
-       return  redirect()->back();
+        return  redirect()->back();
     }
 
     public function logout()
     {
-        if(auth()->user()->role === 'admin'){
+        if (auth()->user()->role === 'admin') {
             auth()->logout();
             return redirect()->route('login.index');
         }

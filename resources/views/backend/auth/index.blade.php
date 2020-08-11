@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <title>{{config('app.name')}}|Login</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('/backend')}}/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="{{asset('/backend')}}/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -37,7 +37,11 @@
 <!-- ============================================================== -->
 <div class="splash-container">
     <div class="card ">
-        <div class="card-header text-center"><a href="{{route('home')}}"><img class="logo-img" src="{{asset('backend')}}/assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
+        <div class="card-header text-center">
+            <a href="{{route('home')}}" class="text-primary text-capitalize font-24">
+                {{config('app.name')}}
+            </a>
+            <span class="splash-description">Please enter your user information.</span></div>
         <div class="card-body">
             <form method="post" action="{{route('login.process')}}">
                 @csrf

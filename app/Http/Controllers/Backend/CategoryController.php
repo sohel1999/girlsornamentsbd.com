@@ -15,36 +15,50 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return  view('backend.category.index',[
-            'categories'=>Category::all()
+        return view('backend.category.index', [
+            'categories' => Category::all()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('backend.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $collection = collect([
+            'status' => $request->input('status') ?? 0,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+        $randomName = null;
+        if ($request->has('image')) {
+            $file = $request->file('image');
+            $randomName = uniqid('ymd', true) . '.' . $file->clientExtension();
+            $file->move(public_path() . '/upload/category', $randomName);
+        }
+        $merge = $collection->merge(['image' => $randomName]);
+        try {
+            Category::create($merge->toArray());
+            notify()->success('Category successfully created.');
+            return redirect()->route('categories.index');
+        } catch (\Throwable $throwable) {
+            notify()->error('Something went wrong');
+            return redirect()->back();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,37 +66,46 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        return view('backend.category.edit', [
+            'category' => Category::findOrFail($id)
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'status' => $request->input('status') ?? 0,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ];
+        $category = Category::findOrFail($id);
+        if ($request->has('image')) {
+            $file = $request->file('image');
+            $randomName = uniqid('ymd', true) . '.' . $file->clientExtension();
+            $file->move(public_path() . '/upload/brand', $randomName);
+            $data['image'] = $randomName;
+            @unlink(public_path('upload/brand/' . $category->image));
+            $category->update($data);
+            notify()->success('Category successfully updated.');
+            return redirect()->route('categories.index');
+        }
+        $category->update($data);
+        notify()->success('Category successfully updated.');
+        return redirect()->route('categories.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        try {
+            Category::find($id)->delete();
+            notify()->success('Category successfully deleted.');
+            return redirect()->route('categories.index');
+        } catch (\Throwable $throwable) {
+            notify()->success('Something went wrong.');
+            return redirect()->route('categories.index');
+        }
     }
 }

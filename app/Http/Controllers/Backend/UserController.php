@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
     public function index()
     {
 //        return  User::where('role','customer')->get();
-        return view('backend.user.index',[
-            'users'=>User::where('role','customer')->get()
+        return view('backend.user.index', [
+            'users'=>User::where('role', 'customer')->get()
         ]);
     }
 
@@ -25,7 +24,6 @@ class UserController extends Controller
      */
     public function create()
     {
-
     }
 
     /**

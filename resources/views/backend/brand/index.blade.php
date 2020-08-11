@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{$brand->name}}</td>
                                     <td>
-                                        <img class="avatar" src="{{$brand->image}}" alt="">
+                                        <img class="avatar" src="{{ asset('upload/brand/'.$brand->image)}}" alt="">
                                     </td>
                                     <td>{{$brand->created_at->format('Y/m/d')}}</td>
                                     <td>
@@ -53,8 +53,18 @@
 
                                     </td>
                                     <td>
-                                        <a class="btn btn-dark" href="{{route('brands.destroy',$brand->id)}}">Delete</a>
-                                        <a class="btn btn-primary" href="{{route('brands.edit',$brand->id)}}">Edit</a>
+                                     <div class="d-flex">
+                                         <div>
+                                             <form action="{{route('brands.destroy',$brand->id)}}" method="post">
+                                                 @method('DELETE')
+                                                 @csrf
+                                                 <button class="border-0 btn btn-dark">Delete</button>
+                                             </form>
+                                         </div>
+                                         <div class="ml-3">
+                                             <a class="btn btn-primary" href="{{route('brands.edit',$brand->id)}}">Edit</a>
+                                         </div>
+                                     </div>
                                     </td>
                                 </tr>
                             @endforeach

@@ -19,7 +19,7 @@ class CreatePaymentsTable extends Migration
             $table->string('method');
             $table->decimal('amount');
             $table->dateTime('payment_at');
-            $table->enum('status',['succeeded','failed','cancelled']);
+            $table->enum('status', ['succeeded','failed','cancelled']);
             $table->timestamps();
         });
     }

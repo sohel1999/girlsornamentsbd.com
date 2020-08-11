@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return  view('frontend.home.index');
+        $sliders = Slider::orderBy('id','desc')->limit(3)->get();
+        $products = Product::take(10)->get();
+
+        // dd($sliders);
+        return  view('frontend.home.index',[
+            'sliders'=>$sliders,
+            'products'=>$products
+        ]);
     }
 
     /**

@@ -11,13 +11,13 @@
                             <h2 class="sidebar-title">CATEGORY</h2>
                             <ul class="sidebar-menu">
 
-                            @foreach($categories as $category)
-                                <li>
-                                    <a href="#">
-                                        {{$category->name}}
-                                        <span>({{$category->products_count}})</span>
-                                    </a>
-                                </li>
+                                @foreach($categories as $category)
+                                    <li>
+                                        <a href="#">
+                                            {{$category->name}}
+                                            <span>({{$category->products_count}})</span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </aside>
@@ -29,8 +29,10 @@
                             <div class="shop-left-tab">
                                 <div class="shop-tab-pill pull-left">
                                     <ul>
-                                        <li class="active" id="left"><a data-toggle="pill" href="#home"><i class="fa fa-th"></i><span></span></a></li>
-                                        <li><a data-toggle="pill" href="#menu1"><i class="fa fa-th-list"></i><span></span></a></li>
+                                        <li class="active" id="left"><a data-toggle="pill" href="#home"><i
+                                                    class="fa fa-th"></i><span></span></a></li>
+                                        <li><a data-toggle="pill" href="#menu1"><i
+                                                    class="fa fa-th-list"></i><span></span></a></li>
                                     </ul>
                                 </div>
                                 <div class="shop-tab-pill pull-right">
@@ -68,58 +70,68 @@
                             <div class="row tab-pane fade in active" id="home">
                                 <div class="shop-single-product-area">
                                     @foreach($products as $product)
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="single-product">
-                                            <a href="single-product.html">
-                                                <img src="{{json_decode($product->images)[0]}}" alt="">
-                                            </a>
-                                            <div class="single-product-overlay sale">
-                                                <h3>sale</h3>
-                                            </div>
-                                            <div class="single-product-content">
-                                                <div class="left-content pull-left">
-                                                    <a href="#"><h2>STERLING SILVER</h2></a>
-                                                    <span class="new-price">$360.00</span>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="single-product">
+                                                <a href="single-product.html">
+                                                    <img src="{{json_decode($product->images)[0]}}" alt="">
+                                                </a>
+                                                <div class="single-product-overlay sale">
+                                                    <h3>sale</h3>
                                                 </div>
-                                                <div class="right-content pull-right">
-                                                    <a href="#"><i class="flaticon-bag"></i></a>
+                                                <div class="single-product-content">
+                                                    <div class="left-content pull-left">
+                                                        <a href="{{route('addToCart',$product->id)}}"><h2>STERLING
+                                                                SILVER</h2></a>
+                                                        <span class="new-price">$360.00</span>
+                                                    </div>
+                                                    <div class="right-content pull-right">
+                                                        <a href="{{route('addToCart',$product->id)}}"><i
+                                                                class="flaticon-bag"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
                             <div id="menu1" class="tab-pane fade">
                                 <div class="row">
                                     @foreach($products as $product)
-                                    <div class="col-md-12">
-                                        <div class="shop-list-single">
-                                            <div class="shop-list-left">
-                                                <a href="#">
-                                                    <img style="width: 300px; height: 300px; object-fit: cover" class="media-object" src="{{json_decode($product->images)[0]}}" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="shop-list-right">
-                                                <div class="left-content">
-                                                    <a href="#"><h2>STERLING SILVER</h2></a>
-                                                    <span class="new-price">$360.00</span>
+                                        <div class="col-md-12">
+                                            <div class="shop-list-single">
+                                                <div class="shop-list-left">
+                                                    <a href="#">
+                                                        <img style="width: 300px; height: 300px; object-fit: cover"
+                                                             class="media-object"
+                                                             src="{{json_decode($product->images)[0]}}" alt=""/>
+                                                    </a>
                                                 </div>
-                                                <div class="list-pro-rating">
-                                                    <i class="fa fa-star icolor"></i>
-                                                    <i class="fa fa-star icolor"></i>
-                                                    <i class="fa fa-star icolor"></i>
-                                                    <i class="fa fa-star icolor"></i>
-                                                    <i class="fa fa-star"></i>
+                                                <div class="shop-list-right">
+                                                    <div class="left-content">
+                                                        <a href="#"><h2>STERLING SILVER</h2></a>
+                                                        <span class="new-price">$360.00</span>
+                                                    </div>
+                                                    <div class="list-pro-rating">
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star icolor"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="product-desc">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                            fringilla augue nec est tristique auctor. Donec non est at
+                                                            libero vulputate rutrum. Morbi ornare lectus quis justo
+                                                            gravida semper. Nulla tellus mi, vulputate adipiscing cursus
+                                                            eu, suscipit id nulla.Morbi ornare lectus quis justo gravida
+                                                            semper.</p>
+                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus
+                                                            mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                                                    </div>
+                                                    <a class="btn-default" href="#">SHOP NOW</a>
                                                 </div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                    <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <a class="btn-default" href="#">SHOP NOW</a>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
 
                                 </div>

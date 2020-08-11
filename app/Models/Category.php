@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected  $guarded = [];
+    protected $guarded = [];
     protected $withCount = 'products';
 
-    protected  $casts = [
+    protected $casts = [
         'status'=>'boolean'
     ];
 

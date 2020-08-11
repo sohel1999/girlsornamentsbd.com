@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="new-product-top">
-                        <div class="col-50 padding-right">
+                        @foreach($products as $product)
+                        <div class="col-50  padding-right" style="padding-bottom: 10px;border-radius: 10px;">
                             <div class="single-top-product">
                                 <img src="{{asset('/frontend')}}/img/new-product/1.jpg" alt="">
                                 <div class="overlay-content">
@@ -17,32 +18,8 @@
                                     <a href="shop.html" class="btn-product">Shop Now</a>
                                 </div>
                             </div>
-                            <div class="single-top-product">
-                                <img src="{{asset('/frontend')}}/img/new-product/3.jpg" alt="">
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h3>Carles Krypen <br> Sterling Silver</h3></a>
-                                    <a href="shop.html" class="btn-product">Shop Now</a>
-                                    <button class="price-offer">25% <br> OFF</button>
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-50 padding-left">
-                            <div class="single-top-product">
-                                <img src="{{asset('/frontend')}}/img/new-product/2.jpg" alt="">
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h3>Logos <br> Sterling Silver</h3></a>
-                                    <a href="shop.html" class="btn-product">Shop Now</a>
-                                </div>
-                            </div>
-                            <div class="single-top-product">
-                                <img src="{{asset('/frontend')}}/img/new-product/4.jpg" alt="">
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h3>Diamond<br> Vintage Gold</h3></a>
-                                    <a href="shop.html" class="btn-product">Shop Now</a>
-                                    <button class="price-offer">25% <br> OFF</button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

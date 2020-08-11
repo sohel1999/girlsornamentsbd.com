@@ -30,6 +30,6 @@ class UserSeeder extends Seeder
             'status'=>true,
             'role'=>'customer'
         ]);
-        factory(User::class,100)->create();
+        factory(User::class, 3)->create();
     }
 }

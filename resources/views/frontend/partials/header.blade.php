@@ -12,10 +12,10 @@
                     <div class="header-top-menu pull-right">
                         <ul class="nav-menu">
                             @auth()
-                                <li><a href="{{route('logout')}}">Logout</a></li>
+                            <li><a href="{{route('logout')}}">Logout</a></li>
                             @endauth
                             @guest()
-                                <li><a href="{{route('auth.index')}}">LOGIN</a></li>
+                            <li><a href="{{route('auth.index')}}">LOGIN</a></li>
                             @endguest
                             <li><a href="#">LANGLUAGE</a>
                                 <div class="ht-menu-down">
@@ -40,8 +40,8 @@
             <div class="row">
                 <div class="col-md-1 col-sm-2 col-xs-6">
                     <div class="header-logo">
-                        <a href="{{route('home')}}">
-                            <img src="{{asset('/frontend')}}/img/logo.png" alt="">
+                        <a href="{{route('home')}}" class="bg-primary" style="padding: 10px; border-radius: 4px; font-weight: 900;">
+                            {{config('app.name')}}
                         </a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <nav>
                             <ul id="nav">
                                 <li><a href="{{route('home')}}">HOME</a></li>
-                                <li><a href="shop.html">SHOP</a></li>
+                                <li><a href="{{route('shop.index')}}">SHOP</a></li>
                                 <li><a href="shop.html">COLLECTION</a></li>
                                 <li><a href="#">Categories</a>
                                     <ul class="sub-menu">
@@ -66,7 +66,7 @@
                                         <li><a href="wishlist.html">Wishlist Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact-us.html">CONTACT</a></li>
+                                <li><a href="#">CONTACT</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -77,35 +77,30 @@
                             <li>
                                 <a class="header-cart-link" href="#">
                                     <i class="flaticon-bag"></i>
-                                    <span>2</span>
+                                    <span>{{session('cart') ? count(session('cart')) : 0}}</span>
                                 </a>
                                 <div class="cart_down_area">
+
+                                    @forelse(session('cart') ?? [] as $item)
                                     <div class="cart_single">
                                         <a href="#">
                                             <img src="{{asset('/frontend')}}/img/product/c-1.jpg" alt="">
                                         </a>
                                         <h2>
-                                            <a href="#">Pellentesque hendrerit</a>
+                                            <a href="#">{{$item['name']}}</a>
                                             <a href="#">
                                                 <span><i class="fa fa-trash"></i></span>
                                             </a>
                                         </h2>
-                                        <p>1 x $222.00</p>
+                                        <p>{{$item['quantity']}} x {{$item['price']}}</p>
                                     </div>
-                                    <div class="cart_single">
-                                        <a href="#">
-                                            <img src="{{asset('/frontend')}}/img/product/c-2.jpg" alt="">
-                                        </a>
-                                        <h2>
-                                            <a href="#">Pellentesque hendrerit</a>
-                                            <a href="#">
-                                                <span><i class="fa fa-trash"></i></span>
-                                            </a>
-                                        </h2>
-                                        <p>1 x $222.00</p>
-                                    </div>
+                                    @empty
+                                    <p>
+                                        Cart Empty
+                                    </p>
+                                    @endforelse
                                     <div class="cart_shoptings">
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="{{route('checkout')}}">Checkout</a>
                                     </div>
                                 </div>
                             </li>

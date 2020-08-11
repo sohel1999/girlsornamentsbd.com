@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('cus_phone');
             $table->text('address');
             $table->dateTime('shipped_at')->nullable();
-            $table->enum('status',['pending','processing','complete','cancelled']);
+            $table->enum('status', ['pending','processing','complete','cancelled']);
             $table->timestamps();
         });
     }

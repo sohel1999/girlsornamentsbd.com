@@ -17,9 +17,9 @@ class ShopController extends Controller
     public function index()
     {
         $products = Product::simplePaginate();
-        $categories = Category::orderBy('id','desc')->limit(10)->get();
+        $categories = Category::orderBy('id', 'desc')->limit(10)->get();
 
-        return  view('frontend.shop.index',[
+        return  view('frontend.shop.index', [
             'products'=>$products,
             'categories'=>$categories
         ]);

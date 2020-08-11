@@ -42,7 +42,7 @@ class AuthController extends Controller
         $data = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' =>bcrypt( $request->input('password')),
+            'password' =>bcrypt($request->input('password')),
             'address' => $request->input('address'),
             'remember_token' => Str::random(10),
             'status'=>true,
@@ -51,11 +51,10 @@ class AuthController extends Controller
         ];
         try {
             $user = User::create($data);
-            \Notification::send($user,new EmailVaryfied($token));
+            \Notification::send($user, new EmailVaryfied($token));
             notify()->success('Your registration successfully complete');
             return redirect()->back();
-        }catch (\Throwable $throwable)
-        {
+        } catch (\Throwable $throwable) {
             return  redirect()->back();
         }
     }
@@ -69,8 +68,7 @@ class AuthController extends Controller
     public function verified($token)
     {
         $user = User::whereToken($token)->first();
-        if(null === $user)
-        {
+        if (null === $user) {
             notify()->error('Token invalid');
             return redirect()->route('auth.index');
         }
@@ -81,7 +79,7 @@ class AuthController extends Controller
             ]);
             notify()->success('Verified');
             return redirect()->route('auth.index');
-        }catch (\Throwable $exception){
+        } catch (\Throwable $exception) {
             notify()->error('Something went wrong');
             return redirect()->route('auth.index');
         }

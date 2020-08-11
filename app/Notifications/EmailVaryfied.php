@@ -45,7 +45,7 @@ class EmailVaryfied extends Notification
     {
         return (new MailMessage)
                     ->line('Email Verification')
-                    ->action('Verify', route('auth.verified',$this->token))
+                    ->action('Verify', route('auth.verified', $this->token))
                     ->line('Thank you for using our application!');
     }
 
