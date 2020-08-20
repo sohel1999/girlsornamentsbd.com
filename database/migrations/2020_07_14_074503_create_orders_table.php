@@ -22,8 +22,10 @@ class CreateOrdersTable extends Migration
             $table->string('cus_email');
             $table->string('cus_phone');
             $table->text('address');
+            $table->string('city');
+            $table->string('postal_code');
             $table->dateTime('shipped_at')->nullable();
-            $table->enum('status', ['pending','processing','complete','cancelled']);
+            $table->enum('status', ['pending','processing','shipped','complete','cancelled']);
             $table->timestamps();
         });
     }

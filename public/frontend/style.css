@@ -1,17 +1,17 @@
 ﻿/*-----------------------------------------------------------------------------------
 
-    Template Name: taj-ecommerce-bootstrap-template 
-    Template URI: 
+    Template Name: taj-ecommerce-bootstrap-template
+    Template URI:
     Description: This is html5 template
     Author: BootExperts
-    Author URI: 
+    Author URI:
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1.	Theme Default CSS (body, link color, section etc)
 	2.	Header Top CSS
 	3.	Heade BOttom CSS
@@ -2624,4 +2624,7 @@ h3.widget-title-modal {
 }
 .modal-content {
   background-color: #f3f3f3;
+}
+.invalid {
+    border: 1px solid red;
 }

@@ -16,10 +16,11 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
-            $table->string('method');
-            $table->decimal('amount');
-            $table->dateTime('payment_at');
-            $table->enum('status', ['succeeded','failed','cancelled']);
+            $table->string('tran_id');
+            $table->string('method')->nullable();
+            $table->decimal('amount')->nullable();
+            $table->dateTime('payment_at')->nullable();
+            $table->enum('status', ['pending','succeeded','failed','cancelled']);
             $table->timestamps();
         });
     }

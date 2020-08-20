@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Throwable;
+use App\Models\Payment;
 use Illuminate\Http\Request;
-use Shipu\SslWPayment\Payment;
+use Uzzal\SslCommerz\Client;
+use Uzzal\SslCommerz\Customer;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
+use Uzzal\SslCommerz\SessionRequest;
 
 class OrderController extends Controller
 {
@@ -15,13 +21,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $payment = new Payment(config('sslwpayment'));
-        // return $payment->customer([
-        //     'cus_name'  => 'Shipu Ahamed', // Customer name
-        //     'cus_email' => 'shipuahamed01@gmail.com', // Customer email
-        //     'cus_phone' => '01616022669' // Customer Phone
-        // ])->transactionId('21005455540')->amount(3500)->hiddenValue();
-        return view('frontend.order.checkout');
+        $carts = session('cart');
+
+        return view('frontend.order.checkout',[
+            'carts'=>$carts
+        ]);
     }
 
     /**
@@ -31,7 +35,16 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+       $carts = session('cart')?? [];
+            $total = collect($carts)->sum(function ($item) {
+            $total = 0;
+            return $total += $item['sub_total'];
+        });
+        return view('frontend.order.checkout', [
+            'carts' => $carts,
+            'total'=>$total
+        ]);
+
     }
 
     /**
@@ -42,6 +55,50 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'country'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'city'=>'required',
+            'postal_code'=>'required',
+            'email'=>'email|required',
+            'phone'=>'required'
+        ]);
+        try{
+            $carts = session('cart');
+            $total = array_sum(array_column($carts,'sub_total'));
+            $customer = new Customer($request->user()->name, $request->user()->email, $request->user()->phone);
+            $resp = Client::initSession($customer, $total);
+            $order = Order::create([
+                'order_number'=>Order::orderNumber(),
+                'user_id'=>auth()->user()->id,
+                'total'=>100,
+                'cus_name'=>$request->input('first_name') .'|'.$request->input('last_name'),
+                'cus_email'=>$request->input('email'),
+                'address'=>$request->input('address'),
+                'city'=>$request->input('city'),
+                'postal_code'=>$request->input('postal_code'),
+                'cus_phone'=>$request->input('phone')
+            ]);
+            foreach($carts as $item){
+                 OrderItem::create([
+                     'order_id'=>$order->id,
+                     'product_id'=>$item['id'],
+                     'unit_price'=>$item['price'],
+                     'quantity'=>$item['quantity'],
+                     'line_total'=>$item['sub_total']
+                 ]);
+            }
+            Payment::create([
+                'order_id'=>$order->id,
+                'tran_id'=>$resp->getTransactionId(),
+                'status'=>'pending'
+            ]);
+            return redirect($resp->getGatewayUrl());
+        }catch(Throwable $th){
+                dd($th);
+        }
     }
 
     /**

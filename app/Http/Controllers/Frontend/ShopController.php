@@ -20,8 +20,8 @@ class ShopController extends Controller
         $categories = Category::orderBy('id', 'desc')->limit(10)->get();
 
         return  view('frontend.shop.index', [
-            'products'=>$products,
-            'categories'=>$categories
+            'products' => $products,
+            'categories' => $categories
         ]);
     }
 
@@ -54,7 +54,14 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $relateProducts = Product::where('category_id', $product->category_id)
+            ->orWhere('brand_id', $product->brand_id)
+            ->take(10)->get();
+        return view('frontend.product.details',[
+            'product'=>$product,
+            'relateProducts'=>$relateProducts
+        ]);
     }
 
     /**

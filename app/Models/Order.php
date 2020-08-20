@@ -23,4 +23,15 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }
+
+    public static function orderNumber()
+    {
+           $lastOrder = self::orderBy('created_at', 'desc')->first();
+        if(!$lastOrder){
+            $number = 0;
+        }else{
+            $number = explode('INV-',$lastOrder->order_number)[1];
+        }
+       return sprintf('INV-%010d', (int) $number +1);
+    }
 }

@@ -12,4 +12,13 @@ class Product extends Model
         'images'=>'array',
         'status'=>'boolean'
     ];
+
+    public function isStock()
+    {
+        if($this->stock > 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }

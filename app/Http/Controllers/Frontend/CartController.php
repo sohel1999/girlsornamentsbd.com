@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $carts = session('cart');
+        $carts = session('cart') ?? [];
         $total = collect($carts)->sum(function ($item) {
             $total = 0;
             return $total += $item['sub_total'];
@@ -25,6 +25,7 @@ class CartController extends Controller
         $product = Product::findOrFail($productId);
         if (array_key_exists($productId, $cart)) {
             $cart[$productId] = [
+                'id'=>$productId,
                 'price' => $product->price,
                 'name' => $product->name,
                 'quantity' => $cart[$productId]['quantity'] + 1,
@@ -33,6 +34,7 @@ class CartController extends Controller
             ];
         } else {
             $cart[$productId] = [
+                'id'=>$productId,
                 'price' => $product->price,
                 'quantity' => 1,
                 'discount' => 0,
@@ -47,9 +49,30 @@ class CartController extends Controller
         notify()->success('Successfuly added item in cart');
         return redirect()->route('shop.index');
     }
+    public function remove($id){
+        $carts = session('cart');
+        unset($carts[$id]);
+        session()->put('cart', $carts);
+        notify()->success('Cart successfully updated');
+         return redirect()->back();
 
-    public function update($id)
+    }
+
+    public function update(Request $request, $id)
     {
+        $carts = session('cart') ?? [];
+        $carts[$id]['quantity']= $request->input('quantity');
+        $carts[$id]['sub_total']= $carts[$id]['sub_total'] * $carts[$id]['quantity'];
+        session()->put('cart', $carts);
+        notify()->success('Cart successfully updated');
+         return redirect()->back();
+    }
 
+    public function clear()
+    {
+        session()->forget('cart');
+        session()->flush();
+        notify()->success('Sucessfully Cart clear');
+        return redirect()->back();
     }
 }
