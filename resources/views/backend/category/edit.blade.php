@@ -33,7 +33,7 @@
                                    autocomplete="off" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="inputUserName">Category Logo
+                            <label for="inputUserName">Category image
                                 <img class="avatar" src="{{asset('upload/category/'.$category->image)}}" alt="brand">
                             </label>
                             <input id="inputUserName" multiple type="file" name="image" data-parsley-trigger="change"

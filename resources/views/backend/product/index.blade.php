@@ -49,10 +49,10 @@
                                 <tr>
                                     <td>{{$product->name}}</td>
                                     <td>
-                                        <img class="avatar" src="{{asset("upload/product/".$product->image)}}" alt="">
+                                        <img class="avatar" src="{{asset('upload/product/'.json_decode($product->images)[0] ?? null)}}" alt="">
                                     </td>
-                                    <td>{{$product->category_id}}</td>
-                                    <td>{{$product->brand_id}}</td>
+                                    <td>{{$product->category->name}}</td>
+                                    <td>{{$product->brand->name}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->stock}}</td>
                                     <td>{{$product->created_at->format('Y/m/d')}}</td>
