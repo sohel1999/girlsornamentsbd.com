@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="new-product-top">
                         @foreach($products as $product)
-                        <div class="col-50  padding-right" style="padding-bottom: 10px;border-radius: 10px;">
+                        <div class="col-50 bg-brand  padding-right" style="padding-bottom: 10px;border-radius: 10px;">
                             <div class="single-top-product">
-                                <img src="{{asset('/frontend')}}/img/new-product/1.jpg" alt="">
+                                <img style="width: 100%; height: 100%;" src="{{asset('upload/product/'.json_decode($product->images)[0] ?? null)}}" alt="">
                                 <div class="overlay-content">
-                                    <a href="shop.html"><h3>Freederica <br> Sterling Silver</h3></a>
+                                    <a href="shop.html"><h3>{{$product->name}}</h3></a>
                                     <a href="shop.html" class="btn-product">Shop Now</a>
                                 </div>
                             </div>

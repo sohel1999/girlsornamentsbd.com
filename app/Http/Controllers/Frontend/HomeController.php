@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::orderBy('id','desc')->limit(3)->get();
-        $products = Product::take(10)->get();
+        $products = Product::inRandomOrder()->limit(10)->get();
 
         // dd($sliders);
         return  view('frontend.home.index',[
