@@ -10,7 +10,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Category List</li>
+                            <li class="breadcrumb-item active" aria-current="page">User List</li>
                         </ol>
                     </nav>
                 </div>
@@ -64,8 +64,8 @@
 
                                     </td>
                                     <td>
-                                        <a class="btn btn-dark" href="{{route('brands.destroy',$user->id)}}">Delete</a>
-                                        <a class="btn btn-primary" href="{{route('brands.edit',$user->id)}}">Edit</a>
+                                        <a class="btn btn-dark" href="{{route('users.destroy',$user->id)}}">Delete</a>
+                                        <a class="btn btn-primary" href="{{route('users.edit',$user->id)}}">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

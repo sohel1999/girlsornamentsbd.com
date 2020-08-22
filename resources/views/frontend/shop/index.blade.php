@@ -72,17 +72,16 @@
                                     @foreach($products as $product)
                                         <div class="col-md-4 col-sm-6">
                                             <div class="single-product">
-                                                <a href="single-product.html">
-                                                    <img src="{{json_decode($product->images)[0]}}" alt="">
+                                                <a href="{{route('shop.show',$product->id)}}">
+                                                    <img src="{{ asset('upload/product/'.json_decode($product->images)[0] ?? null )}}" alt="">
                                                 </a>
                                                 <div class="single-product-overlay sale">
                                                     <h3>sale</h3>
                                                 </div>
                                                 <div class="single-product-content">
                                                     <div class="left-content pull-left">
-                                                        <a href="{{route('addToCart',$product->id)}}"><h2>STERLING
-                                                                SILVER</h2></a>
-                                                        <span class="new-price">$360.00</span>
+                                                        <a href="{{route('addToCart',$product->id)}}"><h2>{{$product->name}}</h2></a>
+                                                        <span class="new-price">{{$product->price}}BDT</span>
                                                     </div>
                                                     <div class="right-content pull-right">
                                                         <a href="{{route('addToCart',$product->id)}}"><i
