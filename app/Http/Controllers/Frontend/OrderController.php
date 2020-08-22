@@ -73,7 +73,7 @@ class OrderController extends Controller
             $order = Order::create([
                 'order_number'=>Order::orderNumber(),
                 'user_id'=>auth()->user()->id,
-                'total'=>100,
+                'total'=>$total,
                 'cus_name'=>$request->input('first_name') .'|'.$request->input('last_name'),
                 'cus_email'=>$request->input('email'),
                 'address'=>$request->input('address'),
@@ -97,7 +97,7 @@ class OrderController extends Controller
             ]);
             return redirect($resp->getGatewayUrl());
         }catch(Throwable $th){
-                dd($th);
+            return redirect()->back();
         }
     }
 
