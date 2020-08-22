@@ -22,7 +22,7 @@
             <div class="card">
                 <h5 class="card-header">Category Edit Form</h5>
                 <div class="card-body">
-                    <form action="{{route('brands.update',$category->id)}}" method="post" id="basicform"
+                    <form action="{{route('categories.update',$category->id)}}" method="post" id="basicform"
                           data-parsley-validate="" novalidate="" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
