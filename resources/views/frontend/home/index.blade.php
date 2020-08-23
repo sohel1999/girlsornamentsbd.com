@@ -14,7 +14,7 @@
                             <div class="single-top-product">
                                 <img style="width: 100%; height: 100%;" src="{{asset('upload/product/'.json_decode($product->images)[0] ?? null)}}" alt="">
                                 <div class="overlay-content">
-                                    <a href="shop.html"><h3>{{$product->name}}</h3></a>
+                                    <a href="{{route('shop.show',$product->id) }}"><h3>{{ $product->name  }}</h3></a>
                                     <a href="{{route('addToCart',$product->id)}}" class="btn-product">Shop Now</a>
                                 </div>
                             </div>
@@ -29,12 +29,13 @@
                         <h2>New Trend</h2>
                     </div>
                     <div class="new-trend-list indicator-style">
+                        @foreach($trend_products as $tp)
                         <div class="col-md-4">
                             <div class="single-new-trend">
-                                <a href="shop.html"><img src="{{asset('/frontend')}}/img/new-product/5.jpg" alt=""></a>
+                                <a href="shop.html"><img src="{{asset('upload/product/'.json_decode($tp->images)[0] ?? null)}}" alt=""></a>
                                 <div class="overlay-content">
-                                    <a href="shop.html"><h2>$280</h2></a>
-                                    <a href="shop.html" class="btn-small">Now</a>
+                                    <a href="{{route('shop.show',$tp->id)}}"><h2>{{$tp->price}}BDT</h2></a>
+                                    <a href="{{route('addToCart',$tp->id)}}" class="btn-small">Now</a>
                                     <div class="product-action">
                                         <ul>
                                             <li>
@@ -46,7 +47,7 @@
                                         </ul>
                                     </div>
                                     <a href="shop.html">
-                                        <h4>Frame Princes Cut Diamond</h4>
+                                        <h4>{{$tp->name}}</h4>
                                     </a>
                                     <div class="pro-rating">
                                         <i class="fa fa-star color"></i>
@@ -58,122 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="single-new-trend">
-                                <a href="shop.html"><img src="{{asset('/frontend')}}/img/new-product/6.jpg" alt=""></a>
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h2>$280</h2></a>
-                                    <a href="shop.html" class="btn-small">Now</a>
-                                    <div class="product-action">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="flaticon-bag"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="flaticon-view"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="shop.html">
-                                        <h4>Frame Princes Cut Diamond</h4>
-                                    </a>
-                                    <div class="pro-rating">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-new-trend">
-                                <a href="#"><img src="{{asset('/frontend')}}/img/new-product/7.jpg" alt=""></a>
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h2>$280</h2></a>
-                                    <a href="shop.html" class="btn-small">Now</a>
-                                    <div class="product-action">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="flaticon-bag"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="flaticon-view"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="shop.html">
-                                        <h4>Frame Princes Cut Diamond</h4>
-                                    </a>
-                                    <div class="pro-rating">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-new-trend">
-                                <a href="shop.html"><img src="{{asset('/frontend')}}/img/new-product/5.jpg" alt=""></a>
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h2>$280</h2></a>
-                                    <a href="shop.html" class="btn-small">Now</a>
-                                    <div class="product-action">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="flaticon-bag"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="flaticon-view"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="shop.html">
-                                        <h4>Frame Princes Cut Diamond</h4>
-                                    </a>
-                                    <div class="pro-rating">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-new-trend">
-                                <a href="shop.html"><img src="{{asset('/frontend')}}/img/new-product/6.jpg" alt=""></a>
-                                <div class="overlay-content">
-                                    <a href="shop.html"><h2>$280</h2></a>
-                                    <a href="shop.html" class="btn-small">Now</a>
-                                    <div class="product-action">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="flaticon-bag"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="flaticon-view"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="shop.html">
-                                        <h4>Frame Princes Cut Diamond</h4>
-                                    </a>
-                                    <div class="pro-rating">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

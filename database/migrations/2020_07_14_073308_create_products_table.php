@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('price');
             $table->integer('stock');
+            $table->tinyInteger('is_trend')->nullable();
+            $table->tinyInteger('is_featur')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });

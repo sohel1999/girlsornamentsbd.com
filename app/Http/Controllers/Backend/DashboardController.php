@@ -16,7 +16,6 @@ class DashboardController extends Controller
           $total_orders = $orders->count('*');
          $sales = $orders->sum('total');
          $total_customer = User::query()->where('role','customer')->count('*');
-         return User::first();
         return view('backend.dashboard.index',[
             'total_order'=>$total_orders,
             'sales'=>$sales,

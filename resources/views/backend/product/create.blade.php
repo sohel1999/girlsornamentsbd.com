@@ -68,6 +68,17 @@
                                     <input name="status" value="1" checked type="checkbox" class="custom-control-input"><span class="custom-control-label">active</span>
                                 </label>
                             </div>
+                              <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                                <label class="be-checkbox custom-control custom-checkbox">
+                                    <input name="is_trend" value="1"  type="checkbox" class="custom-control-input"><span class="custom-control-label">Is Trend</span>
+                                </label>
+                            </div>
+                              <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                                <label class="be-checkbox custom-control custom-checkbox">
+                                    <input name="is_featur" value="1"  type="checkbox" class="custom-control-input"><span class="custom-control-label">Is Featured</span>
+                                </label>
+                            </div>
+
                             <div class="col-sm-6 pl-0">
                                 <p class="text-right">
                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
@@ -81,4 +92,3 @@
         </div>
     </div>
 @endsection
-

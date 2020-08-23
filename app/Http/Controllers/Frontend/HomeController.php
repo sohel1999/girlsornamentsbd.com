@@ -18,11 +18,12 @@ class HomeController extends Controller
     {
         $sliders = Slider::orderBy('id','desc')->limit(3)->get();
         $products = Product::inRandomOrder()->limit(10)->get();
-
+        $trend_products = Product::where('is_trend',1)->limit(20)->get();
         // dd($sliders);
         return  view('frontend.home.index',[
             'sliders'=>$sliders,
-            'products'=>$products
+            'products'=>$products,
+            'trend_products'=>$trend_products
         ]);
     }
 

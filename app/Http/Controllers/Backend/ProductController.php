@@ -59,7 +59,9 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'stock' => $request->input('stock'),
             'images' => json_encode($photos),
-            'status' => $request->input('status') ?? 0
+            'status' => $request->input('status') ?? 0,
+            'is_trend'=>$request->input('is_trend') ?? 0,
+            'is_trend'=>$request->input('is_featur') ?? 0,
         ];
 
         try {
