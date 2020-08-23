@@ -6,15 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.user.index', [
-            'users'=>User::where('role', 'customer')->get()
+        return view('backend.user.admin', [
+            'users' => User::where('role', 'admin')->get(),
         ]);
-    }
 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -23,6 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**

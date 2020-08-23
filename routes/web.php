@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('local/{local}','LocalizationController')->name('local');
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/login', 'AuthController@index')->name('auth.index');
     Route::post('/register', 'AuthController@store')->name('auth.register');
@@ -36,6 +37,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'dashboard'], function () {
         Route::resource('users', 'UserController');
         Route::resource('orders', 'OrderController');
         Route::resource('sliders', 'SliderController');
+        Route::resource('admins','AdminController');
         Route::get('orders/{status}/change/{id}', 'OrderController@updateStatus')->name('change.status');
     });
 });

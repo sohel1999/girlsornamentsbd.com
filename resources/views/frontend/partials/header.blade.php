@@ -17,11 +17,11 @@
                             @guest()
                             <li><a href="{{route('auth.index')}}">LOGIN</a></li>
                             @endguest
-                            <li><a href="#">LANGLUAGE</a>
+                            <li><a href="#">{{config('app.locale')}}</a>
                                 <div class="ht-menu-down">
                                     <ul>
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">Bangla</a></li>
+                                        <li><a href="{{route('local','en')}}">English</a></li>
+                                        <li><a href="{{route('local','bn')}}">Bangla</a></li>
 
                                     </ul>
                                 </div>
@@ -49,10 +49,10 @@
                     <div class="mainmenu text-center">
                         <nav>
                             <ul id="nav">
-                                <li><a href="{{route('home')}}">HOME</a></li>
-                                <li><a href="{{route('shop.index')}}">SHOP</a></li>
-                                <li><a href="shop.html">COLLECTION</a></li>
-                                <li><a href="#">Categories</a>
+                                <li><a href="{{route('home')}}">@lang('header.home')</a></li>
+                                <li><a href="{{route('shop.index')}}">@lang('header.shop')</a></li>
+                                <li><a href="{{route('shop.index')}}">@lang('header.collection')</a></li>
+                                <li><a href="#">@lang('header.category')</a>
                                     <ul class="sub-menu">
                                         <li><a href="404.html">404 Page</a></li>
                                         <li><a href="about.html">About Us</a></li>
@@ -66,7 +66,7 @@
                                         <li><a href="wishlist.html">Wishlist Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">CONTACT</a></li>
+                                <li><a href="#">@lang('header.contact')</a></li>
                             </ul>
                         </nav>
                     </div>
