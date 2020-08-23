@@ -15,7 +15,7 @@
                                 <img style="width: 100%; height: 100%;" src="{{asset('upload/product/'.json_decode($product->images)[0] ?? null)}}" alt="">
                                 <div class="overlay-content">
                                     <a href="shop.html"><h3>{{$product->name}}</h3></a>
-                                    <a href="shop.html" class="btn-product">Shop Now</a>
+                                    <a href="{{route('addToCart',$product->id)}}" class="btn-product">Shop Now</a>
                                 </div>
                             </div>
                         </div>

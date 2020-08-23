@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Throwable;
 
 class AdminController extends Controller
 {
@@ -28,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.user.create');
     }
 
     /**
@@ -39,7 +40,31 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('profile'))
+        {
+            $file = $request->file('profile');
+            $randomName = uniqid('ymd', true) . '.' . $file->clientExtension();
+            $file->move(public_path() . '/upload/users', $randomName);
+
+        }
+        $data = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'status'=>$request->status ?? 0,
+            'image'=>$randomName ?? null,
+            'role'=>'admin',
+            'password'=>bcrypt($request->password),
+            'email_verified_at'=>now()
+        ];
+
+        try{
+            User::create($data);
+            return redirect()->route('admins.index');
+        }catch(Throwable $th){
+            return redirect()->back();
+        }
+
     }
 
     /**

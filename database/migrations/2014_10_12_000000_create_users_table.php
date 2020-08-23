@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('token')->nullable();
+            $table->string('image')->nullable();
             $table->enum('role', ['customer','admin'])->default('customer');
             $table->string('password');
             $table->boolean('status')->default(true);
